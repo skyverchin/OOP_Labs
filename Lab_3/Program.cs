@@ -15,31 +15,30 @@ namespace Lab_3
                 set { x = value; }
             }
 
-            Array[] MyArray = new Array[5];
-            Array[] MyArraySecond = new Array[5];
+            public Array[] MyArray = new Array[5];
+            public Array[] MyArraySecond = new Array[5];
 
-            public void ArrayFill()
-            {
-                Console.WriteLine("Generated first array");
-                for (int i = 0; i < 5; i++)
-                {
-                    MyArray[i] = new Array();
-                    MyArray[i].X = 2+i;
-                    Console.WriteLine(MyArray[i].X);
-                }
+            /* public void ArrayFill()
+             {
+                 Console.WriteLine("Generated first array");
+                 for (int i = 0; i < 5; i++)
+                 {
+                     MyArray[i] = new Array();
+                     MyArray[i].X = 2+i;
+                     Console.WriteLine(MyArray[i].X);
+                 }
 
-                Console.WriteLine("Generated second array");
-                for (int i = 0; i < 5; i++)
-                {
-                    MyArraySecond[i] = new Array();
-                    MyArraySecond[i].X = 3+i;
-                    Console.WriteLine(MyArraySecond[i].X);
-                }
-            }
+                 Console.WriteLine("Generated second array");
+                 for (int i = 0; i < 5; i++)
+                 {
+                     MyArraySecond[i] = new Array();
+                     MyArraySecond[i].X = 3+i;
+                     Console.WriteLine(MyArraySecond[i].X);
+                 }
+             }*/
 
             public void ArrayChose()
             {
-
                 int MaxNumber = MyArray.Max(p => p.X);
                 Console.WriteLine("Most maximum number in first array " + MaxNumber);
 
@@ -61,7 +60,24 @@ namespace Lab_3
             static void Main(string[] args)
             {
                 Array Array = new Array();
-                Array.ArrayFill();
+                //Array.ArrayFill();
+
+                Console.WriteLine("Generated first array");
+                for (int i = 0; i < 5; i++)
+                {
+                    Array.MyArray[i] = new Array();
+                    Array.MyArray[i].X = 2+i;
+                    Console.WriteLine(Array.MyArray[i].X);
+                }
+
+                Console.WriteLine("Generated second array");
+                for (int i = 0; i < 5; i++)
+                {
+                    Array.MyArraySecond[i] = new Array();
+                    Array.MyArraySecond[i].X = 3+i;
+                    Console.WriteLine(Array.MyArraySecond[i].X);
+                }
+
                 Array.ArrayChose();
             }
         }
