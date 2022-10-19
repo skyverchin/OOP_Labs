@@ -1,0 +1,14 @@
+C:\Users\skyve\Desktop\lab_4\obj\Debug\netcoreapp3.1\lab_4.csproj.AssemblyReference.cache
+C:\Users\skyve\Desktop\lab_4\obj\Debug\netcoreapp3.1\lab_4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\skyve\Desktop\lab_4\obj\Debug\netcoreapp3.1\lab_4.AssemblyInfoInputs.cache
+C:\Users\skyve\Desktop\lab_4\obj\Debug\netcoreapp3.1\lab_4.AssemblyInfo.cs
+C:\Users\skyve\Desktop\lab_4\obj\Debug\netcoreapp3.1\lab_4.csproj.CoreCompileInputs.cache
+C:\Users\skyve\Desktop\lab_4\bin\Debug\netcoreapp3.1\lab_4.exe
+C:\Users\skyve\Desktop\lab_4\bin\Debug\netcoreapp3.1\lab_4.deps.json
+C:\Users\skyve\Desktop\lab_4\bin\Debug\netcoreapp3.1\lab_4.runtimeconfig.json
+C:\Users\skyve\Desktop\lab_4\bin\Debug\netcoreapp3.1\lab_4.runtimeconfig.dev.json
+C:\Users\skyve\Desktop\lab_4\bin\Debug\netcoreapp3.1\lab_4.dll
+C:\Users\skyve\Desktop\lab_4\bin\Debug\netcoreapp3.1\lab_4.pdb
+C:\Users\skyve\Desktop\lab_4\obj\Debug\netcoreapp3.1\lab_4.dll
+C:\Users\skyve\Desktop\lab_4\obj\Debug\netcoreapp3.1\lab_4.pdb
+C:\Users\skyve\Desktop\lab_4\obj\Debug\netcoreapp3.1\lab_4.genruntimeconfig.cache
