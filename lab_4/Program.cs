@@ -8,84 +8,93 @@ namespace Lab_4
 {
     internal class Program
     {
-        public class XYZ
+        public class PolarSystem
         {
-            public int x, y; //Decart
-            public int r, f; //Polar
-            public int p, fi; //Polar
-            public double TmpR, TmpF, TmpP, TmpFi; //Temporary variables
+            public double x, y; //Decart
+            public double r, f; //Polar
 
-            Random rnd = new Random(); //Random generator
+            Random rnd = new Random();
 
-            public void TransformPolarIntoDecart()
+            public void TransformPolarIntoDecart(out double X, out double Y)
             {
-                double TmpX = r*Math.Cos(f);
-                double TmpY = r*Math.Sin(f);
-                Console.WriteLine("Polar to Decart result " + "x = " + TmpX + " " + "y = " + TmpY);
+                X = r*Math.Cos(f);
+                Y = r*Math.Sin(f);
             }
 
-            public void TransformDecartIntoPolar()
+            public void TransformDecartIntoPolar(out double R, out double F)
             {
-                TmpR = Math.Sqrt(Math.Pow(x, 2)+Math.Pow(y, 2));
+                R = Math.Sqrt(Math.Pow(x, 2)+Math.Pow(y, 2));
+                F = 0; //---
 
-                if (TmpR == 0)
-                    TmpF = rnd.Next();
+                if (R == 0)
+                    F = rnd.Next();
                 else
                 {
                     if (x>0 && y>=0)
-                        TmpF = Math.Atan(y/x);
+                        F = Math.Atan(y/x);
                     else if (x>0 && y<0)
-                        TmpF = Math.Atan(y/x)+2*Math.PI;
+                        F = Math.Atan(y/x)+2*Math.PI;
                     else if (x<0)
-                        TmpF = Math.Atan(y/x)+Math.PI;
+                        F = Math.Atan(y/x)+Math.PI;
                     else if (x==0 && y>0)
-                        TmpF = Math.PI/2;
+                        F = Math.PI/2;
                     else if (x==0 && y<0)
-                        TmpF = 3* Math.PI/2;
-                }
-                Console.WriteLine("Decart to Cyliner result r = " + TmpR + " fi = " + TmpF);  
+                        F = 3* Math.PI/2;
+                }  
             }
-
-            public void TransformCylinderIntoPolar()
-            {
-                double TmpX = p*Math.Cos(fi);
-                double TmpY = p*Math.Sin(fi);
-
-                Console.WriteLine("Cylinder to Decart result " + "x = " + TmpX + " " + "y = " + TmpY);
-            }
-
-            public void TransformPolarIntoCylinder()
-            {
-                TmpP = Math.Sqrt(Math.Pow(x, 2)+Math.Pow(y, 2));
-
-                if (x==0 && y==0)
-                    TmpFi = 0;
-                if (x>=0)
-                    TmpFi = Math.Asin(y/TmpP);
-                if (x>0)
-                    TmpFi = Math.Atan(y/x);
-                if (x<0)
-                    TmpFi = -Math.Asin(y/TmpP)+Math.PI;
-
-                Console.WriteLine("Decart to Polar result p = " + TmpP + " fi = " + TmpFi);
-            }
-
         }
+
+        public class CylinderSystem : PolarSystem
+        {
+            public double z; //Decart
+            public double p, fi; //Cylinder
+
+            public void TransformCylinderIntoDecart(out double X, out double Y, out double Z)
+            {
+                X = p*Math.Cos(fi);
+                Y = p*Math.Sin(fi);
+                Z = z;
+            }
+
+            public void TransformDecartIntoCylinder(out double P, out double F, out double Z)
+            {
+                P = Math.Sqrt(Math.Pow(x, 2)+Math.Pow(y, 2));
+                F = Math.Atan(y/x);
+                F = F * (Math.PI/180);
+                Z = z;
+            }
+        }
+ 
         class MainClass{
             static void Main(string[] args)
             {
-                XYZ XYZ = new XYZ();
-                XYZ.x = 1;
-                XYZ.y = -2;
-                XYZ.r = 4;
-                XYZ.f = 30;
-                XYZ.p = 3;
-                XYZ.fi = 60;
+                PolarSystem PolarSystem = new PolarSystem();
+                CylinderSystem CylinderSystem = new CylinderSystem();
 
-                XYZ.TransformPolarIntoDecart();
-                XYZ.TransformDecartIntoPolar();
-                XYZ.TransformCylinderIntoPolar();
-                XYZ.TransformPolarIntoCylinder();
+                PolarSystem.x = -3;
+                PolarSystem.y = 4;
+                PolarSystem.r = 4;
+                PolarSystem.f = 30;
+
+                CylinderSystem.x = PolarSystem.x; //---
+                CylinderSystem.y = PolarSystem.y; //---
+
+                CylinderSystem.z = 3;
+                CylinderSystem.p = 3;
+                CylinderSystem.fi = 60;
+
+                double OutFirst, OutSecond, OutThird;
+                PolarSystem.TransformPolarIntoDecart(out OutFirst, out OutSecond);
+                Console.WriteLine("Polar to Decart result x = " + OutFirst + " y = " + OutSecond);
+
+                PolarSystem.TransformDecartIntoPolar(out OutFirst, out OutSecond);
+                Console.WriteLine("Decart to Polar result r = " + OutFirst + " fi = " + OutSecond);
+
+                CylinderSystem.TransformCylinderIntoDecart(out OutFirst, out OutSecond, out OutThird);
+                Console.WriteLine("Cylinder to Decart result x = " + OutFirst + " y = " + OutSecond + " z = " + OutThird);
+
+                CylinderSystem.TransformDecartIntoCylinder(out OutFirst, out OutSecond, out OutThird);
+                Console.WriteLine("Decart to Cylinder result p = " + OutFirst + " f = " + OutSecond + " z = " + OutThird);
             }
         }
     }
